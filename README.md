@@ -72,6 +72,10 @@ detect-indent:      198161087ns
 
 - [`truncate-json`](https://github.com/ehmicky/truncate-json): Truncate a JSON
   string
+- [`is-json-value`](https://github.com/ehmicky/is-json-value): Check if a value
+  is valid JSON
+- [`safe-json-value`](https://github.com/ehmicky/safe-json-value): ⛑️ JSON
+  serialization should never fail
 
 # Support
 
