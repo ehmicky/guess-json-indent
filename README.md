@@ -6,14 +6,24 @@
 
 Guess the indentation of a JSON string.
 
-Work in progress!
-
-# Features
-
 # Example
 
 ```js
 import guessJsonIndent from 'guess-json-indent'
+
+const input = [{ example: true }]
+guessJsonIndent(JSON.stringify(input)) // undefined
+guessJsonIndent(JSON.stringify(input, undefined, 1)) // 1
+guessJsonIndent(JSON.stringify(input, undefined, 2)) // 2
+guessJsonIndent(JSON.stringify(input, undefined, 4)) // 4
+guessJsonIndent(JSON.stringify(input, undefined, '\t')) // '\t'
+guessJsonIndent(JSON.stringify(input, undefined, '\t\t')) // '\t\t'
+
+// Keep the indentation of a JSON string when parsing/serializing it
+const jsonString = JSON.stringify(input, undefined, 2)
+const indent = guessJsonIndent(jsonString)
+const parsedValue = JSON.parse(jsonString)
+console.log(JSON.stringify(input, undefined, indent)) // Same as jsonString
 ```
 
 # Install
@@ -28,19 +38,21 @@ not `require()`.
 
 # API
 
-## guessJsonIndent(value, options?)
+## guessJsonIndent(jsonString)
 
-`value` `any`\
-`options` [`Options?`](#options)\
-_Return value_: [`object`](#return-value)
+The return value is the same as the third argument to `JSON.serialize()`:
 
-### Options
+- `undefined`: none
+- integer: number of spaces
+- string: tabs
 
-Object with the following properties.
+# Benchmarks
 
-### Return value
+This library is very fast thanks to:
 
-Object with the following properties.
+- Looking only at the first indented line, which is sufficient in the vast
+  majority of real-life cases.
+- Tailoring the logic for JSON.
 
 # Related projects
 
