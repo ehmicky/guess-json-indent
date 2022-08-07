@@ -18,18 +18,19 @@ export default function guessJsonIndent(jsonString) {
   return getIndent(jsonString, firstIndex, secondIndex)
 }
 
-// Whitespaces are ignored before|between|after tokens in JSON
+// Whitespaces are ignored before|between|after tokens in JSON.
+// Uses imperative logic for performance.
+/* eslint-disable fp/no-loops, fp/no-mutation, fp/no-let, max-depth */
 const skipWhitespaces = function (jsonString, startIndex) {
-  // eslint-disable-next-line fp/no-loops, fp/no-mutation, fp/no-let
   for (let index = startIndex; index < jsonString.length; index += 1) {
     const character = jsonString[index]
 
-    // eslint-disable-next-line max-depth
     if (!isJsonWhitespace(character)) {
       return index
     }
   }
 }
+/* eslint-enable fp/no-loops, fp/no-mutation, fp/no-let, max-depth */
 
 // JSON defines only those are valid whitespaces
 const isJsonWhitespace = function (character) {
@@ -47,39 +48,40 @@ const isJsonObjectOrArray = function (character) {
   return character === '{' || character === '['
 }
 
-// eslint-disable-next-line complexity, max-statements
+// Uses imperative logic for performance
+/* eslint-disable complexity, max-statements, fp/no-let, init-declarations,
+   fp/no-loops, fp/no-mutation, max-depth */
 const getIndent = function (jsonString, firstIndex, secondIndex) {
-  // eslint-disable-next-line fp/no-let, init-declarations
   let indent
 
-  // eslint-disable-next-line fp/no-loops, fp/no-let, fp/no-mutation
   for (let index = secondIndex - 1; index > firstIndex; index -= 1) {
     const character = jsonString[index]
 
-    // eslint-disable-next-line max-depth
     if (character === '\r') {
       return
     }
 
-    // eslint-disable-next-line max-depth
     if (character === '\n') {
-      // eslint-disable-next-line max-depth
-      if (indent === undefined) {
-        return 0
-      }
-
-      return indent[0] === ' ' ? indent.length : indent
+      return normalizeIndent(indent)
     }
 
-    // eslint-disable-next-line max-depth
     if (indent === undefined) {
-      // eslint-disable-next-line fp/no-mutation
       indent = character
     } else if (indent[0] === character) {
-      // eslint-disable-next-line fp/no-mutation
       indent += character
     } else {
       return
     }
   }
+}
+/* eslint-enable complexity, max-statements, fp/no-let, init-declarations,
+   fp/no-loops, fp/no-mutation, max-depth */
+
+// Ensure the return value can be passed as `JSON.serialize()` third argument
+const normalizeIndent = function (indent) {
+  if (indent === undefined) {
+    return 0
+  }
+
+  return indent[0] === ' ' ? indent.length : indent
 }
