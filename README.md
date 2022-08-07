@@ -51,8 +51,8 @@ The return value is the same as the third argument to `JSON.serialize()`:
 This library is very fast thanks to:
 
 - Looking only at the first indented line, which is sufficient in the vast
-  majority of real-life cases.
-- Tailoring the logic for JSON.
+  majority of real-life cases
+- Being specific to JSON
 
 # Related projects
 
