@@ -32,8 +32,7 @@ each(
       [`${firstChar}\n\t "`],
     ]),
   ],
-  (_, [jsonString, indent]) => {
-    const title = JSON.stringify(jsonString).replace(/ /gu, '_')
+  ({ title }, [jsonString, indent]) => {
     test(`Guesses indent | ${title}`, (t) => {
       t.is(guessJsonIndent(jsonString), indent)
     })
@@ -43,7 +42,7 @@ each(
 each(
   [{ one: true }, [true], [{ one: true }]],
   // eslint-disable-next-line no-magic-numbers
-  [undefined, 1, 4, '\t\t'],
+  [undefined, 1, 2, 4, 8, '\t', '\t\t'],
   ({ title }, value, indent) => {
     test(`Identifies indent | ${title}`, (t) => {
       t.is(guessJsonIndent(JSON.stringify(value, undefined, indent)), indent)
