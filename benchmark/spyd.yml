@@ -1,0 +1,7 @@
+precision: 4
+reporter: debug
+titles:
+  guessJsonIndent: guess-json-indent
+  detectIndent: detect-indent
+  detectIndentation: detect-indentation
+  detectJsonIndent: detect-json-indent

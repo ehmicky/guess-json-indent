@@ -54,6 +54,20 @@ This library is very fast thanks to:
   majority of real-life cases
 - Being specific to JSON
 
+The following benchmarks compares it:
+
+- With [`detect-indent`](https://github.com/sindresorhus/detect-indent),
+  [`detect-json-indent`](https://github.com/mapbox/detect-json-indent) and
+  [`detect-indentation`](https://github.com/bevry/detect-indentation)
+- On a big JSON string (8MB)
+
+```
+guess-json-indent:         43ns
+detect-json-indent:  60114470ns
+detect-indentation: 141975495ns
+detect-indent:      198161087ns
+```
+
 # Related projects
 
 - [`truncate-json`](https://github.com/ehmicky/truncate-json): Truncate a JSON
