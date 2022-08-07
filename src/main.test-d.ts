@@ -1,8 +1,27 @@
-import { expectType, expectAssignable } from 'tsd'
+import { expectType, expectError } from 'tsd'
 
-import guessJsonIndent, { Options } from './main.js'
+import guessJsonIndent from './main.js'
 
-expectType<object>(guessJsonIndent(true))
-
-guessJsonIndent(true, {})
-expectAssignable<Options>({})
+expectType<undefined | number | `\t${string}`>(guessJsonIndent(''))
+expectError(guessJsonIndent({}))
+expectType<undefined>(guessJsonIndent('[]'))
+expectType<undefined>(guessJsonIndent('{}'))
+expectType<undefined>(guessJsonIndent('""'))
+expectType<undefined>(guessJsonIndent('true'))
+expectType<undefined>(guessJsonIndent('false'))
+expectType<undefined>(guessJsonIndent('null'))
+expectType<undefined>(guessJsonIndent('12'))
+expectType<undefined>(guessJsonIndent('[{}]'))
+expectType<undefined>(guessJsonIndent('[true]'))
+expectType<1>(guessJsonIndent('[\n "'))
+expectType<1>(guessJsonIndent('{\n "'))
+expectType<2>(guessJsonIndent('[\n  "'))
+expectType<2>(guessJsonIndent('{\n  "'))
+expectType<4>(guessJsonIndent('[\n    "'))
+expectType<4>(guessJsonIndent('{\n    "'))
+expectType<8>(guessJsonIndent('[\n        "'))
+expectType<8>(guessJsonIndent('{\n        "'))
+expectType<'\t'>(guessJsonIndent('[\n\t"'))
+expectType<'\t'>(guessJsonIndent('{\n\t"'))
+expectType<'\t\t'>(guessJsonIndent('[\n\t\t"'))
+expectType<'\t\t'>(guessJsonIndent('{\n\t\t"'))
