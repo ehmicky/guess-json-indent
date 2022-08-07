@@ -1,24 +1,21 @@
 // Guess the indentation of a JSON string
 export default function guessJsonIndent(jsonString) {
-  const firstNonWsCharIndex = skipWhitespaces(jsonString, 0)
+  const firstIndex = skipWhitespaces(jsonString, 0)
 
   if (
-    firstNonWsCharIndex === undefined ||
-    !isJsonObjectOrArray(jsonString[firstNonWsCharIndex])
+    firstIndex === undefined ||
+    !isJsonObjectOrArray(jsonString[firstIndex])
   ) {
     return
   }
 
-  const secondNonWsCharIndex = skipWhitespaces(
-    jsonString,
-    firstNonWsCharIndex + 1,
-  )
+  const secondIndex = skipWhitespaces(jsonString, firstIndex + 1)
 
-  if (secondNonWsCharIndex === undefined) {
+  if (secondIndex === undefined) {
     return
   }
 
-  return getIndent(jsonString, firstNonWsCharIndex, secondNonWsCharIndex)
+  return getIndent(jsonString, firstIndex, secondIndex)
 }
 
 // Whitespaces are ignored before|between|after tokens in JSON
@@ -51,22 +48,12 @@ const isJsonObjectOrArray = function (character) {
 }
 
 // eslint-disable-next-line complexity, max-statements
-const getIndent = function (
-  jsonString,
-  firstNonWsCharIndex,
-  secondNonWsCharIndex,
-) {
+const getIndent = function (jsonString, firstIndex, secondIndex) {
   // eslint-disable-next-line fp/no-let, init-declarations
   let indent
 
-  // eslint-disable-next-line fp/no-loops
-  for (
-    // eslint-disable-next-line fp/no-let
-    let index = secondNonWsCharIndex - 1;
-    index > firstNonWsCharIndex;
-    // eslint-disable-next-line fp/no-mutation
-    index -= 1
-  ) {
+  // eslint-disable-next-line fp/no-loops, fp/no-let, fp/no-mutation
+  for (let index = secondIndex - 1; index > firstIndex; index -= 1) {
     const character = jsonString[index]
 
     // eslint-disable-next-line max-depth
