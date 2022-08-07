@@ -56,6 +56,9 @@ This library is very fast thanks to:
 
 # Related projects
 
+- [`truncate-json`](https://github.com/ehmicky/truncate-json): Truncate a JSON
+  string
+
 # Support
 
 For any question, _don't hesitate_ to [submit an issue on GitHub](../../issues).
