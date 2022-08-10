@@ -1,6 +1,6 @@
 import test from 'ava'
-import templateName from 'template-name'
+import guessJsonIndent from 'guess-json-indent'
 
 test('Dummy test', (t) => {
-  t.true(templateName(true))
+  t.true(guessJsonIndent(true))
 })
