@@ -40,7 +40,7 @@ not `require()`.
 
 ## guessJsonIndent(jsonString)
 
-The return value is the same as the third argument to `JSON.serialize()`:
+The return value is the same as the third argument to `JSON.stringify()`:
 
 - `undefined`: none
 - integer: number of spaces

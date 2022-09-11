@@ -77,7 +77,7 @@ const getIndent = function (jsonString, firstIndex, secondIndex) {
 /* eslint-enable complexity, max-statements, fp/no-let, init-declarations,
    fp/no-loops, fp/no-mutation, max-depth */
 
-// Ensure the return value can be passed as `JSON.serialize()` third argument
+// Ensure the return value can be passed as `JSON.stringify()` third argument
 const normalizeIndent = function (indent) {
   if (indent === undefined) {
     return 0
