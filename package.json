@@ -34,7 +34,7 @@
     "typescript",
     "whitespace"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
   "homepage": "https://www.github.com/ehmicky/guess-json-indent",
   "repository": "ehmicky/guess-json-indent",
   "bugs": {
