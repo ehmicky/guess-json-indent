@@ -59,6 +59,7 @@ type IndentedTokenStart = `${'[' | '{'}${Newline}`
  * ```
  */
 // Does a best effort to guess the return value from the type only
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 export default function guessJsonIndent<T extends string>(
   jsonString: T,
 ): T extends `${JsonTokenStart}${JsonTokenStart}${string}` | JsonTokenFull
@@ -76,3 +77,4 @@ export default function guessJsonIndent<T extends string>(
   : T extends `${IndentedTokenStart}\t\t${JsonTokenStart}${string}`
   ? '\t\t'
   : undefined | number | `\t${string}`
+/* eslint-enable @typescript-eslint/no-magic-numbers */
