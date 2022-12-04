@@ -1,9 +1,10 @@
-import { expectType, expectError } from 'tsd'
+import { expectType } from 'tsd'
 
 import guessJsonIndent from 'guess-json-indent'
 
 expectType<undefined | number | `\t${string}`>(guessJsonIndent(''))
-expectError(guessJsonIndent({}))
+// @ts-expect-error
+guessJsonIndent({})
 expectType<undefined>(guessJsonIndent('[]'))
 expectType<undefined>(guessJsonIndent('{}'))
 expectType<undefined>(guessJsonIndent('""'))
