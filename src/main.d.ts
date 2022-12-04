@@ -23,10 +23,13 @@ type JsonTokenStart =
   | 'f'
   // null
   | 'n'
+
 // Common top-level JSON values in full
 type JsonTokenFull = '[]' | '{}' | 'true' | 'false' | 'null'
+
 // JSON allows both CR and CRLF newlines
 type Newline = '\n' | '\r\n'
+
 // Common start of a JSON indented string
 type IndentedTokenStart = `${'[' | '{'}${Newline}`
 
