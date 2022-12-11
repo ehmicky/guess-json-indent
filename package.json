@@ -57,7 +57,7 @@
     "detect-indentation": "^5.20.0",
     "detect-json-indent": "^0.0.3",
     "spyd": "^0.6.1",
-    "test-each": "^5.6.0"
+    "test-each": "^5.7.0"
   },
   "engines": {
     "node": ">=14.18.0"
