@@ -7,18 +7,18 @@ import guessJsonIndentLib from 'guess-json-indent'
 const bigArray = new Array(1e6).fill(true)
 const jsonString = JSON.stringify(bigArray, undefined, 2)
 
-export const guessJsonIndent = function () {
+export const guessJsonIndent = () => {
   guessJsonIndentLib(jsonString)
 }
 
-export const detectIndent = function () {
+export const detectIndent = () => {
   detectIndentLib(jsonString)
 }
 
-export const detectIndentation = function () {
+export const detectIndentation = () => {
   detectIndentationLib(jsonString)
 }
 
-export const detectJsonIndent = function () {
+export const detectJsonIndent = () => {
   detectJsonIndentLib(jsonString)
 }
