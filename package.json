@@ -51,7 +51,7 @@
     "lib": "src"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^2.0.68",
+    "@ehmicky/dev-tasks": "^2.0.69",
     "detect-indent": "^7.0.1",
     "detect-indentation": "^5.20.0",
     "detect-json-indent": "^0.0.3",
