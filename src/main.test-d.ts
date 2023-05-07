@@ -1,6 +1,6 @@
+import guessJsonIndent from 'guess-json-indent'
 import { expectType } from 'tsd'
 
-import guessJsonIndent from 'guess-json-indent'
 
 expectType<undefined | number | `\t${string}`>(guessJsonIndent(''))
 // @ts-expect-error
