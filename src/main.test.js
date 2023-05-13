@@ -1,6 +1,7 @@
 import test from 'ava'
-import guessJsonIndent from 'guess-json-indent'
 import { each } from 'test-each'
+
+import guessJsonIndent from 'guess-json-indent'
 
 each(
   [
