@@ -65,16 +65,16 @@ export default function guessJsonIndent<T extends string>(
 ): T extends `${JsonTokenStart}${JsonTokenStart}${string}` | JsonTokenFull
   ? undefined
   : T extends `${IndentedTokenStart} ${JsonTokenStart}${string}`
-  ? 1
-  : T extends `${IndentedTokenStart}  ${JsonTokenStart}${string}`
-  ? 2
-  : T extends `${IndentedTokenStart}    ${JsonTokenStart}${string}`
-  ? 4
-  : T extends `${IndentedTokenStart}        ${JsonTokenStart}${string}`
-  ? 8
-  : T extends `${IndentedTokenStart}\t${JsonTokenStart}${string}`
-  ? '\t'
-  : T extends `${IndentedTokenStart}\t\t${JsonTokenStart}${string}`
-  ? '\t\t'
-  : undefined | number | `\t${string}`
+    ? 1
+    : T extends `${IndentedTokenStart}  ${JsonTokenStart}${string}`
+      ? 2
+      : T extends `${IndentedTokenStart}    ${JsonTokenStart}${string}`
+        ? 4
+        : T extends `${IndentedTokenStart}        ${JsonTokenStart}${string}`
+          ? 8
+          : T extends `${IndentedTokenStart}\t${JsonTokenStart}${string}`
+            ? '\t'
+            : T extends `${IndentedTokenStart}\t\t${JsonTokenStart}${string}`
+              ? '\t\t'
+              : undefined | number | `\t${string}`
 /* eslint-enable @typescript-eslint/no-magic-numbers */
