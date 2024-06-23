@@ -56,7 +56,7 @@
   "devDependencies": {
     "@ehmicky/dev-tasks": "^3.0.4",
     "detect-indent": "^7.0.1",
-    "detect-indentation": "^5.20.0",
+    "detect-indentation": "^6.8.0",
     "detect-json-indent": "^0.0.3",
     "spyd": "^0.8.2",
     "test-each": "^7.0.0"
