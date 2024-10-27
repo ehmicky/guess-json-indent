@@ -47,7 +47,7 @@ const isJsonObjectOrArray = (character) =>
   character === '{' || character === '['
 
 // Uses imperative logic for performance
-/* eslint-disable complexity, max-statements, fp/no-let, init-declarations,
+/* eslint-disable max-statements, fp/no-let, init-declarations,
    fp/no-loops, fp/no-mutation, max-depth */
 const getIndent = (jsonString, firstIndex, secondIndex) => {
   let indent
@@ -72,7 +72,7 @@ const getIndent = (jsonString, firstIndex, secondIndex) => {
     }
   }
 }
-/* eslint-enable complexity, max-statements, fp/no-let, init-declarations,
+/* eslint-enable max-statements, fp/no-let, init-declarations,
    fp/no-loops, fp/no-mutation, max-depth */
 
 // Ensure the return value can be passed as `JSON.stringify()` third argument
