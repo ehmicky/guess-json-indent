@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^3.0.19",
-    "@ehmicky/eslint-config": "^20.0.1",
+    "@ehmicky/eslint-config": "^20.0.2",
     "detect-indent": "^7.0.1",
     "detect-indentation": "^6.8.0",
     "detect-json-indent": "^0.0.3",
